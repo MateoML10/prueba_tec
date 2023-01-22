@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'mateoml10_tecno',
         'USER': 'mateoml10_tecno',
         'PASSWORD': 'Computador10705',
-        'HOST': 'https://phpmyadmin.alwaysdata.com/',
+        'HOST': 'mysql-mateoml10.alwaysdata.net',
         'PORT': '3306'
 
     }
