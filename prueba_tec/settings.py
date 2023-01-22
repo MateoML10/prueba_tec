@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'prueba_tec.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tecno',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'mateoml10_tecno',
+        'USER': 'mateoml10_tecno',
+        'PASSWORD': 'Computador10705',
+        'HOST': 'https://phpmyadmin.alwaysdata.com/',
         'PORT': '3306'
 
     }
