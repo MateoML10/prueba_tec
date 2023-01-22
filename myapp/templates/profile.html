@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"></script>
+</script>
+<script>
+$(document).ready(function() {
+    $('#boostrapdatable').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+    } );
+} );
+</script>
+
+<nav class="navbar navbar-expand" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <form class="d-flex">
+        <a href="/signout" class="btn btn-danger">Cerrar Sesion</a>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<center><h1>Bienvenido</h1></center>
+<center><h5><b>Hola {{ user.username }}</b></h5></center>
+{% if user.is_authenticated %}
+<br>
+<div class="col-md-12">
+  <span><a href="/addnew" class="btn btn-primary">Crear Empleado</a></span>
+</div>
+<br>
+<br>
+<div class="table-responsive" class="display">
+  <table id="boostrapdatable" class="table table-striped" style="width:100%">
+    <thead>
+      <th></th>
+      <th>NOMBRE</th>
+      <th>CC</th>
+      <th>FECHA DE NACIMIENTO</th>
+      <th>EMAIL</th>
+      <th>TELEFONO</th>
+      <th>EDITAR</th>
+      <th>ELIMINAR</th>
+    </thead>
+
+    <tbody>
+      {% for empleado in empleados %}
+      <tr>
+        <td>{{ empleado.id}}</td>
+        <td>{{ empleado.nombres }}</td>
+        <td>{{ empleado.cc }}</td>
+        <td>{{ empleado.fecha_nacimiento }}</td>
+        <td>{{ empleado.email }}</td>
+        <td>{{ empleado.telefono }}</td>
+        <td><a href="/edit/{{ empleado.id }}" class="btn btn-primary">Editar</a></td>
+        <td><a href="/delete/{{ empleado.id }}" class="btn btn-danger">Eliminar </a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <th></th>
+      <th>NOMBRE</th>
+      <th>CC</th>
+      <th>FECHA DE NACIMIENTO</th>
+      <th>EMAIL</th>
+      <th>TELEFONO</th>
+      <th>EDITAR</th>
+      <th>ELIMINAR</th>
+    </tfoot>
+  </table>
+</div>
+<br>
+{% else %}
+<a href="/signin" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+<a href="/signup" class="btn btn-success">Signup</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Productos</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Desempeños</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Proyectos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Compañia</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search Tecnoglass" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<br>
+    <h2>Bienvenido a Tecnoglass</h2>
+    <!DOCTYPE html>
+{% load static %}
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+  </body>
+</html>
+    {% if user.is_authenticated %}
+    <h5><b>Hola {{ user.username }}</b></h5><br>
+        <a href="/signout" class="btn btn-danger">Cerrar Sesión</a>
+        <a href="/profile" class="btn btn-warning">Listar Empleados</a>
+    {% else %}
+        <a href="/signin" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+        <a href="/signup" class="btn btn-success">Registrar</a>
+    {% endif %}
+    <img src="{% static "imagenes/tec.jpg" %}" alt="tecnoglass" width="100%">
+    <br>
+    <h4><b><p style="text-align: left">
+      ¿Quienes Somos?
+    </p></b></h4>
+    <p>
+      Tecnoglass es una compañía líder en la fabricación de vidrio arquitectónico y productos de aluminio para la industria mundial de la construcción, tanto comercial como residencial. Desde 1984 ha mejorado la calidad de su vidrio y ventanas, fuerza y durabilidad. Sus marcas – Tecnoglass, ESWindows y Alutions – están completamente integradas en un moderno complejo de manufactura de 340 mil de metros cuadrados, que nos permite tener mayor control sobre cada uno de los productos.
+  
+  Gracias a tecnología de punta, Tecnoglass se ha convertido en uno de los proveedores preferidos para cubrir todas las necesidades de los clientes en cuanto a vidrio: templado, laminado e insulado, así como serigrafía, vidrio de alto impacto, baja emisión y curvo.
+  
+  Tecnoglass ofrece vidrio de alta calidad que cumple con las necesidades del mercado, con precios competitivos y entregas oportunas.
+    </p>
+{% endblock %}
+

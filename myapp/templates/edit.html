@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <img href="../tec.jpg" class="rounded" width="82">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <form class="d-flex"">
+            <a href=" {% url 'profile' %}"><button type="button" class="btn btn-dark">Volver</button></a>
+        </form>
+      </ul>
+      <form class="d-flex">
+        <a href="/signout" class="btn btn-danger">Cerrar Sesion</a>
+      </form>
+    </div>
+  </div>
+</nav>
+  <br>
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/update/{{ empleados.id }}">
+        {% csrf_token %}
+        <div class="container">
+            <div class="col-12">
+                <h3>Editar Empleado</h3>
+            </div>
+            <div class="mb-3">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" name="nombres" id="id_nombres" required maxlength="100"
+                    value="{{ empleados.nombres }}" />
+            </div>
+            <div class="mb-3">
+                <label>CC:</label>
+                <input type="text" class="form-control" name="cc" id="id_cc" required maxlength="100"
+                    value="{{ empleados.cc }}" />
+            </div>
+            <div class="mb-3">
+                <label>Fecha de nacimiento:</label>
+                {{empleados.fecha_nacimiento}}
+                <input type="date" class="form-control" name="fecha_nacimiento" id="id_fecha_nacimiento" maxlength="150" value="{{ empleados.fecha_nacimiento }}" />
+            </div>
+            <div class="mb-3">
+                <label>Email:</label>
+                <input type="email" class="form-control" name="email" id="id_email" required maxlength="254"
+                    value="{{ empleados.email }}" />
+            </div>
+            <div class="mb-3">
+                <label>Telefono:</label>
+                <input type="text" class="form-control" name="telefono" id="id_telefono" required maxlength="100"
+                    value="{{ empleados.telefono }}" />
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success btn-lg">Update</button>
+            </div> 
+        </div>
+    </form>
+{% endblock %}

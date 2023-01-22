@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}agregar Empleado{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <img href="../tec.jpg" class="rounded" width="82">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <form class="d-flex"">
+            <a href=" {% url 'profile' %}"><button type="button" class="btn btn-dark">Volver</button></a>
+        </form>
+      </ul>
+      <form class="d-flex">
+        <a href="/signout" class="btn btn-danger">Cerrar Sesion</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<br>
+<div class="col-md-12">
+  <form method="POST" class="post-form" action="/addnew">
+    {% csrf_token %}
+    <div class="container">
+      <div class="col-12">
+
+        <h3>Cree un empleado: </h3>
+      </div>
+      <br>
+      <div class="mb-3">
+        <label>Nombre: </label>
+        {{form.nombres}}
+      </div>
+      <div class="mb-3">
+        <label>CC:</label>
+        {{form.cc}}
+      </div>
+      <div class="mb-3">
+        <label>Fecha de nacimiento:</label>
+        <input type="date" name="fecha_nacimiento" min="1950-01-01" max="2023-12-31" step="1" required
+          id="id_fecha_nacimiento">
+      </div>
+      <div class="mb-3">
+        <label>Email:</label>
+        {{form.email}}
+      </div>
+      <div class="mb-3">
+        <label>Telefono:</label>
+        {{form.telefono}}
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
