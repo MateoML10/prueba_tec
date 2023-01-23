@@ -77,21 +77,15 @@ WSGI_APPLICATION = 'prueba_tec.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MateoML10$tecno',
-        'USER': 'MateoML10',
-        'PASSWORD': '',
-        'HOST': 'MateoML10.mysql.pythonanywhere-services.com',
+        'NAME': 'mateoml10_tecno',
+        'USER': 'mateoml10_tecno',
+        'PASSWORD': 'Computador10705',
+        'HOST': 'mysql-mateoml10.alwaysdata.net',
         'PORT': '3306'
 
     }
 }
 #    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'mateoml10_tecno',
-#        'USER': 'mateoml10_tecno',
-#        'PASSWORD': 'Computador10705',
-#        'HOST': 'mysql-mateoml10.alwaysdata.net',
-#       'PORT': '3306'
 
 
 # Password validation
